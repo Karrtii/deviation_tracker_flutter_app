@@ -4,6 +4,8 @@ import 'package:deviation_tracker_flutter_app/screens/wrapper.dart';
 import 'package:deviation_tracker_flutter_app/services/local_storage/localstorage_user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:deviation_tracker_flutter_app/viewmodels/project_viewmodel.dart';
 
 import 'constants.dart';
 
@@ -53,7 +55,11 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
     ]);
 
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProjectViewModel()),
+      ],
+    child: MaterialApp(
       // localizationsDelegates: AppLocalizations.localizationsDelegates, // <- here
       // supportedLocales: AppLocalizations.supportedLocales, // <- and here
       navigatorKey: navigatorKey,
@@ -87,6 +93,7 @@ class _MyAppState extends State<MyApp> {
         // '/login/privacy' : (BuildContext context) => new PrivacySettingsScreen(),
         // '/login/terms' : (BuildContext context) => new TermsOfServiceScreen(),
       },
+    ),
     );
   }
 }

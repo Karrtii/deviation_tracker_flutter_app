@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constants.dart';
-import 'main/deviation_home_screen.dart';
+import 'main/deviation_browse_screen.dart';
 import 'main/favourite_screen.dart';
 import 'main/home_screen.dart';
 
@@ -20,7 +20,7 @@ class _WrapperState extends State<Wrapper> {
   int _currentIndex = 0;
   final _screens = [
     HomeScreen(),
-    DeviationHomeScreen(),
+    DeviationBrowseScreen(),
     FavouriteScreen(),
   ];
 
