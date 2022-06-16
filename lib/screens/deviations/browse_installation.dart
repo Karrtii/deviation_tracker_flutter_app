@@ -1,5 +1,6 @@
 import 'package:deviation_tracker_flutter_app/shared/listviews/TurbinesListView.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/project_viewmodel.dart';
+import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,17 +14,18 @@ class BrowseInstallationScreen extends StatefulWidget {
 class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProjectViewModel>(
+    return Consumer<TurbineViewModel>(
         builder: (context, viewmodel, child)
         {
           return Scaffold(
+            backgroundColor: Colors.transparent,
             body: Padding(
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
               child: Container(
                 child: FutureBuilder(
-                    future: viewmodel.getAllBookings(),
+                    future: viewmodel.getAllTurbines(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (viewmodel.projects.length == 0) {
+                      if (viewmodel.turbines.length == 0) {
                         return Container(
                           child: Center(
                             child: CircularProgressIndicator(),
@@ -32,7 +34,7 @@ class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
                         );
                       }
                       else{
-                        return TurbinesListView(projects: viewmodel.projects);
+                        return TurbinesListView(turbines: viewmodel.turbines);
                       }
                     }
                 ),

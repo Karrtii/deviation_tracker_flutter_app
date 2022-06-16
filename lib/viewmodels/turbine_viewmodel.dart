@@ -1,26 +1,24 @@
-import 'package:deviation_tracker_flutter_app/models/project_model.dart';
+import 'package:deviation_tracker_flutter_app/models/turbine_model.dart';
 import 'package:deviation_tracker_flutter_app/models/user_model.dart';
 import 'package:deviation_tracker_flutter_app/services/local_storage/localstorage_user_service.dart';
 import 'package:deviation_tracker_flutter_app/services/webservices/auth_service.dart';
-import 'package:deviation_tracker_flutter_app/services/webservices/project_service.dart';
+import 'package:deviation_tracker_flutter_app/services/webservices/turbine_service.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'LoadingStatus.dart';
 
-class ProjectViewModel with ChangeNotifier
+class TurbineViewModel with ChangeNotifier
 {
   LoadingStatus loadingStatus = LoadingStatus.Empty;
-  ProjectService projectService = new ProjectService();
-  ProjectModel? projectModel;
+  TurbineService turbineService = new TurbineService();
+  TurbineModel? turbineModel;
   UserModel? userModel;
 
-  var projects = <ProjectModel>[];
-
-  var projectNames = <String>[];
+  var turbines = <TurbineModel>[];
 
   final _storage = new UserLocalStorageService();
 
-  Future<void> getAllProjects() async
+  Future<void> getAllTurbines() async
   {
     loadingStatus = LoadingStatus.Searching;
     userModel = await _storage.getLoginDetails();
@@ -30,15 +28,9 @@ class ProjectViewModel with ChangeNotifier
     // userModel!.access_token = token;
     await _storage.setLoginDetails(userModel!);
 
-    this.projects = (await projectService.getAllProjects(userModel!.access_token))!;
+    this.turbines = (await turbineService.getAllTurbines(userModel!.access_token))!;
 
-    this.projectNames.clear();
-    for(var p in this.projects)
-      {
-        this.projectNames.add(p.projectName);
-      }
-
-    if (this.projects.isEmpty) {
+    if (this.turbines.isEmpty) {
       loadingStatus = LoadingStatus.Empty;
     }
 
