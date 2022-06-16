@@ -15,6 +15,7 @@ class TurbineViewModel with ChangeNotifier
   UserModel? userModel;
 
   var turbines = <TurbineModel>[];
+  var turbinesByProjectName = <TurbineModel>[];
 
   final _storage = new UserLocalStorageService();
 
@@ -31,6 +32,27 @@ class TurbineViewModel with ChangeNotifier
     this.turbines = (await turbineService.getAllTurbines(userModel!.access_token))!;
 
     if (this.turbines.isEmpty) {
+      loadingStatus = LoadingStatus.Empty;
+    }
+
+    else {
+      loadingStatus = LoadingStatus.Completed;
+    }
+  }
+
+  Future<void> getAllTurbinesByProjectName(String projectName) async
+  {
+    loadingStatus = LoadingStatus.Searching;
+    userModel = await _storage.getLoginDetails();
+
+    // Refreshing token
+    // String token = await AuthService().refreshToken(userModel!.access_token, userModel!.refresh_token);
+    // userModel!.access_token = token;
+    await _storage.setLoginDetails(userModel!);
+
+    this.turbinesByProjectName = (await turbineService.getAllTurbinesByProjectName(userModel!.access_token, projectName))!;
+
+    if (this.turbinesByProjectName.isEmpty) {
       loadingStatus = LoadingStatus.Empty;
     }
 

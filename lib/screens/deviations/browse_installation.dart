@@ -5,13 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BrowseInstallationScreen extends StatefulWidget {
-  const BrowseInstallationScreen({Key? key}) : super(key: key);
+  const BrowseInstallationScreen({Key? key, required this.projectName}) : super(key: key);
+
+  final String projectName;
 
   @override
   State<BrowseInstallationScreen> createState() => _BrowseInstallationScreenState();
 }
 
 class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
+
+  String? hey = "heyyyyyyyyyyyyyy: ";
   @override
   Widget build(BuildContext context) {
     return Consumer<TurbineViewModel>(
@@ -23,9 +27,9 @@ class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
               padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
               child: Container(
                 child: FutureBuilder(
-                    future: viewmodel.getAllTurbines(),
+                    future: viewmodel.getAllTurbinesByProjectName(widget.projectName),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (viewmodel.turbines.length == 0) {
+                      if (viewmodel.turbinesByProjectName.length == 0) {
                         return Container(
                           child: Center(
                             child: CircularProgressIndicator(),
@@ -34,7 +38,7 @@ class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
                         );
                       }
                       else{
-                        return TurbinesListView(turbines: viewmodel.turbines);
+                        return TurbinesListView(turbines: viewmodel.turbinesByProjectName);
                       }
                     }
                 ),

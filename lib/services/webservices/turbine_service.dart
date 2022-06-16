@@ -40,6 +40,35 @@ class TurbineService
     return null;
   }
 
+  Future<List<TurbineModel>?> getAllTurbinesByProjectName(String access_token, String projectName) async
+  {
+    try {
+      var response = await get(Uri.parse("$url/project?projectName=$projectName"), headers: {
+        "Authorization": "Bearer $access_token"
+      });
+
+      if (response.statusCode == 200) {
+        var responseDetails = jsonDecode(response.body);
+
+        List<TurbineModel> turbines = [];
+
+        for (var t in responseDetails) {
+          TurbineModel turbineModel = TurbineModel(
+              turbineId: t['turbineId'],
+              project: ProjectModel.fromJson(t['project'])
+          );
+          turbines.add(turbineModel);
+        }
+      }
+      else {
+        throw Exception('Response failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    return null;
+  }
+
   // Future<List<TurbineModel>?> getAllTurbines(String access_token) async
   // {
   //   try{

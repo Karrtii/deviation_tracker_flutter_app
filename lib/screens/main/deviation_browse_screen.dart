@@ -16,7 +16,7 @@ class DeviationBrowseScreen extends StatefulWidget {
 class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with TickerProviderStateMixin {
 
   String _projectName = "";
-  String? selectedItem = "ALbatros";
+  String selectedItem = "ALbatros";
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                                    value: item,
                                    child: Text(item),
                                   )).toList(),
-                                  onChanged: (item) => setState(() => selectedItem = (item) as String?),
+                                  onChanged: (item) => setState(() => selectedItem = (item) as String),
                                   // items: viewmodel.projects.map((ProjectModel project) {
                                   //   print(viewmodel.projects.length);
                                   //   return DropdownMenuItem(
@@ -134,7 +134,7 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                       controller: _tabController,
                       children: [
                         BrowseLoadoutScreen(),
-                        BrowseInstallationScreen(),
+                        BrowseInstallationScreen(projectName: selectedItem,),
                         BrowseCommisioningScreen(),
                       ],
                     ),
