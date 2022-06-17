@@ -35,7 +35,7 @@ class _VisitsListViewState extends State<VisitsListView> {
               //       VisitsScreen(),
               // ));
             },
-            child: Container(
+            child: Card(
               child: Row(
                 children: [
                   Text(widget.visits == 0 ? "" : DateFormat("dd MMMM, yyyy,").format(DateTime.parse(widget.visits[index].activityStartDate))),

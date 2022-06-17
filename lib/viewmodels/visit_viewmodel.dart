@@ -14,6 +14,8 @@ class VisitViewModel with ChangeNotifier
   UserModel? userModel;
 
   var visits = <VisitModel>[];
+  var visitStartDates = <String>[];
+  var uniqueVisitStartDates = <String>[];
 
   final _storage = new UserLocalStorageService();
 
@@ -29,6 +31,8 @@ class VisitViewModel with ChangeNotifier
 
     this.visits = (await visitService.getAllVisits(userModel!.access_token))!;
 
+    getAllUniqueVisitStartDates(visits);
+
     if (this.visits.isEmpty) {
       loadingStatus = LoadingStatus.Empty;
     }
@@ -36,5 +40,20 @@ class VisitViewModel with ChangeNotifier
     else {
       loadingStatus = LoadingStatus.Completed;
     }
+  }
+
+  Future<void> getAllUniqueVisitStartDates(List<VisitModel> visits) async
+  {
+    var seen = Set<String>();
+
+    this.visitStartDates.clear();
+    for(var v in visits)
+    {
+      this.visitStartDates.add(v.activityStartDate);
+    }
+
+    this.uniqueVisitStartDates = this.visitStartDates.where((element) => seen.add(element)).toList();
+
+    print(this.uniqueVisitStartDates);
   }
 }
