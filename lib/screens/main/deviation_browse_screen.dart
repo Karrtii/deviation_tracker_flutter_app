@@ -1,3 +1,4 @@
+import 'package:deviation_tracker_flutter_app/constants.dart';
 import 'package:deviation_tracker_flutter_app/models/project_model.dart';
 import 'package:deviation_tracker_flutter_app/screens/deviations/browse_commisioning.dart';
 import 'package:deviation_tracker_flutter_app/screens/deviations/browse_installation.dart';
@@ -90,33 +91,45 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                             //selectedItem = viewmodel.projectNames[0];
                             return Padding(
                               padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                              child: Container(
-                                height: 58,
-                                width: 130,
-                                child: DropdownButtonFormField<String>(
-                                  isExpanded: true,
-                                  style: TextStyle(fontSize: 14, color: Colors.black),
-                                  decoration: InputDecoration(
-                                    labelText: 'Project',
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      borderSide: BorderSide(width: 1, color: Colors.purple),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 58,
+                                    width: 130,
+                                    child: DropdownButtonFormField<String>(
+                                      isExpanded: true,
+                                      style: TextStyle(fontSize: 14, color: Colors.black),
+                                      decoration: InputDecoration(
+                                        labelText: 'Project',
+                                        labelStyle: TextStyle(color: Colors.white),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(12),
+                                          borderSide: BorderSide(width: 1, color: primaryColor),
+                                        ),
+                                      ),
+                                      value: selectedItem,
+                                      items: viewmodel.projectNames.map((item) => DropdownMenuItem<String>(
+                                       value: item,
+                                       child: Text(item),
+                                      )).toList(),
+                                      onChanged: (item) => setState(() => selectedItem = (item) as String),
+                                      // items: viewmodel.projects.map((ProjectModel project) {
+                                      //   print(viewmodel.projects.length);
+                                      //   return DropdownMenuItem(
+                                      //     value: project,
+                                      //     child: Text(project.projectName),
+                                      //   );
+                                      // }).toList(),
                                     ),
                                   ),
-                                  value: selectedItem,
-                                  items: viewmodel.projectNames.map((item) => DropdownMenuItem<String>(
-                                   value: item,
-                                   child: Text(item),
-                                  )).toList(),
-                                  onChanged: (item) => setState(() => selectedItem = (item) as String),
-                                  // items: viewmodel.projects.map((ProjectModel project) {
-                                  //   print(viewmodel.projects.length);
-                                  //   return DropdownMenuItem(
-                                  //     value: project,
-                                  //     child: Text(project.projectName),
-                                  //   );
-                                  // }).toList(),
-                                ),
+                                  new Spacer(),
+                                  IconButton(
+                                    iconSize: 35,
+                                    color: primaryColor,
+                                    icon: Icon(Icons.search),
+                                    onPressed: () {},
+                                  ),
+                                ],
                               ),
                             );
                           }

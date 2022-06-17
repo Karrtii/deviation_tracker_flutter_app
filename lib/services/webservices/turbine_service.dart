@@ -59,6 +59,7 @@ class TurbineService
           );
           turbines.add(turbineModel);
         }
+        return turbines;
       }
       else {
         throw Exception('Response failed');

@@ -1,4 +1,4 @@
-import 'package:deviation_tracker_flutter_app/shared/listviews/TurbinesListView.dart';
+import 'package:deviation_tracker_flutter_app/shared/listviews/turbines_listview.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/project_viewmodel.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart';
 import 'package:flutter/material.dart';
