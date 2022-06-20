@@ -16,6 +16,7 @@ class VisitViewModel with ChangeNotifier
   var visits = <VisitModel>[];
   var visitStartDates = <String>[];
   var uniqueVisitStartDates = <String>[];
+  var visitsByTurbineId = <VisitModel>[];
 
   final _storage = new UserLocalStorageService();
 
@@ -31,7 +32,7 @@ class VisitViewModel with ChangeNotifier
 
     this.visits = (await visitService.getAllVisits(userModel!.access_token))!;
 
-    getAllUniqueVisitStartDates(visits);
+    //getAllUniqueVisitStartDates(visits);
 
     if (this.visits.isEmpty) {
       loadingStatus = LoadingStatus.Empty;
@@ -55,5 +56,28 @@ class VisitViewModel with ChangeNotifier
     this.uniqueVisitStartDates = this.visitStartDates.where((element) => seen.add(element)).toList();
 
     print(this.uniqueVisitStartDates);
+  }
+
+  Future<void> getAllVisitsByTurbineId(String turbineId) async
+  {
+    loadingStatus = LoadingStatus.Searching;
+    userModel = await _storage.getLoginDetails();
+
+    // Refreshing token
+    // String token = await AuthService().refreshToken(userModel!.access_token, userModel!.refresh_token);
+    // userModel!.access_token = token;
+    await _storage.setLoginDetails(userModel!);
+
+    this.visitsByTurbineId = (await visitService.getAllVisitsByTurbineId(userModel!.access_token, turbineId))!;
+
+    getAllUniqueVisitStartDates(visitsByTurbineId);
+
+    if (this.visitsByTurbineId.isEmpty) {
+      loadingStatus = LoadingStatus.Empty;
+    }
+
+    else {
+      loadingStatus = LoadingStatus.Completed;
+    }
   }
 }

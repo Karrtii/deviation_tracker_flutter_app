@@ -1,6 +1,12 @@
 import 'package:deviation_tracker_flutter_app/models/visit_model.dart';
+import 'package:deviation_tracker_flutter_app/shared/cards/visits_back_card.dart';
+import 'package:deviation_tracker_flutter_app/shared/cards/visits_front_card.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+
+import '../../constants.dart';
 
 class VisitsListView extends StatefulWidget {
   const VisitsListView({Key? key, required this.visits}) : super(key: key);
@@ -35,13 +41,14 @@ class _VisitsListViewState extends State<VisitsListView> {
               //       VisitsScreen(),
               // ));
             },
-            child: Card(
-              child: Row(
-                children: [
-                  Text(widget.visits == 0 ? "" : DateFormat("dd MMMM, yyyy,").format(DateTime.parse(widget.visits[index].activityStartDate))),
-                ],
+            child: FlipCard(
+              direction: FlipDirection.VERTICAL,
+              front: VisitsFrontCard(
+                startDate: widget.visits[index].activityStartDate,
+                endDate: widget.visits[index].activityEndDate,
               ),
-            ),
+              back: VisitsBackCard(),
+            )
           );
         }
       },

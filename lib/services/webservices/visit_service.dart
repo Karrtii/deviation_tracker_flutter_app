@@ -43,4 +43,38 @@ class VisitService
     }
     return null;
   }
+
+  Future<List<VisitModel>?> getAllVisitsByTurbineId(String access_token, String turbineId) async
+  {
+    try {
+      var response = await get(Uri.parse("$url/turbine?turbineId=$turbineId"), headers: {
+        "Authorization": "Bearer $access_token"
+      });
+
+      if (response.statusCode == 200) {
+        var responseDetails = jsonDecode(response.body);
+
+        List<VisitModel> visits = [];
+
+        for (var r in responseDetails) {
+          VisitModel visitModel = VisitModel(
+              visitId: r['visitId'],
+              activityStartDate: r['activityStartDate'],
+              activityEndDate: r['activityEndDate'],
+              activityStartTime: r['activityStartTime'],
+              activityEndTime: r['activityEndTime'],
+              turbine: TurbineModel.fromJson(r['turbine'])
+          );
+          visits.add(visitModel);
+        }
+        return visits;
+      }
+      else {
+        throw Exception('Response failed');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+    return null;
+  }
 }

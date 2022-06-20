@@ -53,9 +53,10 @@ class _TurbinesListViewState extends State<TurbinesListView> {
         else {
           return GestureDetector(
             onTap: () {
+              print(widget.turbines[index].turbineId,);
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                    VisitsScreen(),
+                    VisitsScreen(turbine: widget.turbines[index].turbineId,),
               ));
             },
             child: Container(
