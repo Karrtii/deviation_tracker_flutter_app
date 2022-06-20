@@ -42,7 +42,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     Text(
                       widget.startDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.startDate)),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 11,
                         color: primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -75,7 +75,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     Text(
                       widget.endDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.endDate)),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 11,
                         color: primaryColor,
                         fontWeight: FontWeight.bold,
                       ),
@@ -108,7 +108,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     Text(
                       widget.startDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.startDate)),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 11,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),

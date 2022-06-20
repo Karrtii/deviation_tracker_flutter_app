@@ -38,7 +38,7 @@ class _BrowseInstallationScreenState extends State<BrowseInstallationScreen> {
                         );
                       }
                       else{
-                        return TurbinesListView(turbines: viewmodel.turbinesByProjectName);
+                        return TurbinesListView(turbines: viewmodel.turbinesByProjectName, viewmodel: viewmodel,);
                       }
                     }
                 ),

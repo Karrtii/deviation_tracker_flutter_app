@@ -3,6 +3,7 @@ import 'package:deviation_tracker_flutter_app/models/visit_model.dart';
 import 'package:deviation_tracker_flutter_app/services/local_storage/localstorage_user_service.dart';
 import 'package:deviation_tracker_flutter_app/services/webservices/visit_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'LoadingStatus.dart';
 
@@ -80,4 +81,21 @@ class VisitViewModel with ChangeNotifier
       loadingStatus = LoadingStatus.Completed;
     }
   }
+
+  Future<void> addVisit(String startDate, String endDate, String startTime, String endTime, turbine) async
+  {
+    loadingStatus = LoadingStatus.Searching;
+    userModel = await _storage.getLoginDetails();
+
+    // Refreshing token
+    // String token = await AuthService().refreshToken(userModel!.access_token, userModel!.refresh_token);
+    // userModel!.access_token = token;
+    await _storage.setLoginDetails(userModel!);
+    
+    VisitModel visit = VisitModel(activityStartDate: startDate, activityEndDate: endDate, activityStartTime: startTime, activityEndTime: endTime, turbine: turbine);
+    
+    await visitService.addVisit(userModel!.access_token, visit);
+  }
+
+
 }

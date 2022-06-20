@@ -34,7 +34,7 @@ class _BrowseLoadoutScreenState extends State<BrowseLoadoutScreen> {
                                 );
                               }
                               else{
-                                return TurbinesListView(turbines: viewmodel.turbines);
+                                return TurbinesListView(turbines: viewmodel.turbines, viewmodel: viewmodel,);
                               }
                             }
                         ),

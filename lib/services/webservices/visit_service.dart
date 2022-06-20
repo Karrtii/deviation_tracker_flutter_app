@@ -77,4 +77,39 @@ class VisitService
     }
     return null;
   }
+
+  Future addVisit(String access_token, VisitModel visitModel) async
+  {
+    try {
+      // var thing = jsonEncode(<String, dynamic>{
+      //   "activityStartDate": visitModel.activityStartDate,
+      //   "activityEndDate": visitModel.activityEndDate,
+      //   "activityStartTime": visitModel.activityStartTime,
+      //   "activityEndTime": visitModel.activityEndTime,
+      //   "turbine": {
+      //     "turbineId": visitModel.turbine!.turbineId,
+      //   },
+      // }
+      // );
+      //
+      // print(thing);
+
+      await post(Uri.parse(url), headers: {
+      "Authorization": "Bearer $access_token", "Content-Type": "application/json"
+      }, body: jsonEncode(<String, dynamic>{
+        "activityStartDate": visitModel.activityStartDate,
+        "activityEndDate": visitModel.activityEndDate,
+        "activityStartTime": visitModel.activityStartTime,
+        "activityEndTime": visitModel.activityEndTime,
+        "turbine": {
+          "turbineId": visitModel.turbine!.turbineId,
+        },
+      }
+      ),
+      );
+    }
+    catch(e) {
+      print(e.toString());
+    }
+  }
 }

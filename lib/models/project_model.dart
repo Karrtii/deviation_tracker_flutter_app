@@ -12,4 +12,13 @@ class ProjectModel
         projectName: json["projectName"]
     );
   }
+
+  static Map<String, dynamic> toJson(ProjectModel project) {
+    Map<String, dynamic> jsonMap = {
+      "projectId": project.projectId,
+      "projectName": project.projectName
+    };
+
+    return jsonMap;
+  }
 }

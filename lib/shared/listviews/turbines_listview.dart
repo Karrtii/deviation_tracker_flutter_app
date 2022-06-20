@@ -2,13 +2,16 @@ import 'package:deviation_tracker_flutter_app/constants.dart';
 import 'package:deviation_tracker_flutter_app/models/project_model.dart';
 import 'package:deviation_tracker_flutter_app/models/turbine_model.dart';
 import 'package:deviation_tracker_flutter_app/screens/deviations/visits_screen.dart';
+import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart';
+import 'package:deviation_tracker_flutter_app/viewmodels/visit_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TurbinesListView extends StatefulWidget {
-  const TurbinesListView({Key? key, required this.turbines}) : super(key: key);
+  const TurbinesListView({Key? key, required this.turbines, required this.viewmodel}) : super(key: key);
 
   final List<TurbineModel> turbines;
+  final TurbineViewModel viewmodel;
 
   @override
   State<TurbinesListView> createState() => _TurbinesListViewState();
@@ -52,11 +55,14 @@ class _TurbinesListViewState extends State<TurbinesListView> {
         }
         else {
           return GestureDetector(
-            onTap: () {
+            onTap: () async {
               print(widget.turbines[index].turbineId,);
+
+              widget.viewmodel.addView(widget.turbines[index].turbineId);
+
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                    VisitsScreen(turbine: widget.turbines[index].turbineId,),
+                    VisitsScreen(turbine: widget.turbines[index],),
               ));
             },
             child: Container(

@@ -13,4 +13,12 @@ class TurbineModel {
         project: ProjectModel.fromJson(json['project'])
     );
   }
+
+  static Map<String, dynamic> toJson(TurbineModel turbine) {
+    Map<String, dynamic> jsonMap = {
+      "turbineId": turbine.turbineId
+    };
+
+    return jsonMap;
+  }
 }
