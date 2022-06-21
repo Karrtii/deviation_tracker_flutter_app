@@ -37,4 +37,19 @@ class DeviationViewModel with ChangeNotifier
       loadingStatus = LoadingStatus.Completed;
     }
   }
+
+  Future<void> addVisit(String startDate, String endDate, String startTime, String endTime, String problem, String solution, bool approved, visit) async
+  {
+    loadingStatus = LoadingStatus.Searching;
+    userModel = await _storage.getLoginDetails();
+
+    // Refreshing token
+    // String token = await AuthService().refreshToken(userModel!.access_token, userModel!.refresh_token);
+    // userModel!.access_token = token;
+    await _storage.setLoginDetails(userModel!);
+
+    DeviationModel deviation = DeviationModel(deviationStartDate: startDate, deviationEndDate: endDate, deviationStartTime: startTime, deviationEndTime: endTime, problem: problem, solution: solution, approved: approved, visit: visit);
+
+    await deviationService.addVisit(userModel!.access_token, deviation);
+  }
 }

@@ -46,4 +46,29 @@ class DeviationService
     }
     return null;
   }
+
+  Future addVisit(String access_token, DeviationModel deviationModel) async
+  {
+    try {
+      await post(Uri.parse(url), headers: {
+        "Authorization": "Bearer $access_token", "Content-Type": "application/json"
+      }, body: jsonEncode(<String, dynamic>{
+        "deviationStartDate": deviationModel.deviationStartDate,
+        "deviationEndDate": deviationModel.deviationEndDate,
+        "deviationStartTime": deviationModel.deviationStartTime,
+        "deviationEndTime": deviationModel.deviationEndTime,
+        "problem": deviationModel.problem,
+        "solution": deviationModel.solution,
+        "approved": deviationModel.approved,
+        "visit": {
+          "visitId": deviationModel.visit!.visitId,
+        },
+      }
+      ),
+      );
+    }
+    catch(e) {
+      print(e.toString());
+    }
+  }
 }

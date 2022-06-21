@@ -497,6 +497,11 @@ class _VisitsScreenState extends State<VisitsScreen> {
                               "${startTime.hour < 10 ? "0"+startTime.hour.toString() : startTime.hour}:${startTime.minute < 10 ? "0"+startTime.minute.toString() : startTime.minute}:00",
                               "${endTime.hour < 10 ? "0"+endTime.hour.toString() : endTime.hour}:${endTime.minute < 10 ? "0"+endTime.minute.toString() : endTime.minute}:00",
                               widget.turbine);
+
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) =>
+                                VisitsScreen(turbine: widget.turbine),
+                          ));
                         },
                         style: ElevatedButton.styleFrom(
                           primary: primaryColor,
