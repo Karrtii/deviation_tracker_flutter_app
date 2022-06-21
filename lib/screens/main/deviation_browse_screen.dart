@@ -141,7 +141,7 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height / 1.6,
+                        .height / 1.5,
                     width: double.maxFinite,
                     child: TabBarView(
                       controller: _tabController,

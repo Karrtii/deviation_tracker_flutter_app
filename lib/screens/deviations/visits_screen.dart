@@ -375,27 +375,27 @@ class _VisitsScreenState extends State<VisitsScreen> {
                                     ),
                                   ),
                                 ),
-                                IconButton(
-                                  icon: SvgPicture.asset(
-                                    "assets/icons/calendericon.svg",
-                                    color: primaryColor,
-                                  ),
-                                  onPressed: () async {
-                                    DateTime? newEndDate = await showDatePicker(
-                                      context: context,
-                                      initialDate: endDate,
-                                      firstDate: DateTime(2021),
-                                      lastDate: DateTime(2023),
-                                    );
-
-                                    if(newEndDate == null) return;
-
-                                    setState(() {
-                                      endDate = newEndDate;
-                                      print(endDate);
-                                    });
-                                  },
-                                ),
+                                // IconButton(
+                                //   icon: SvgPicture.asset(
+                                //     "assets/icons/calendericon.svg",
+                                //     color: primaryColor,
+                                //   ),
+                                //   onPressed: () async {
+                                //     DateTime? newEndDate = await showDatePicker(
+                                //       context: context,
+                                //       initialDate: endDate,
+                                //       firstDate: DateTime(2021),
+                                //       lastDate: DateTime(2023),
+                                //     );
+                                //
+                                //     if(newEndDate == null) return;
+                                //
+                                //     setState(() {
+                                //       endDate = newEndDate;
+                                //       print(endDate);
+                                //     });
+                                //   },
+                                // ),
                               ],
                             ),
                           ),
@@ -439,25 +439,25 @@ class _VisitsScreenState extends State<VisitsScreen> {
                                     ),
                                   ),
                                 ),
-                                IconButton(
-                                  icon: SvgPicture.asset(
-                                    "assets/icons/icontime.svg",
-                                    color: primaryColor,
-                                  ),
-                                  onPressed: () async {
-                                    TimeOfDay? newEndTime = await showTimePicker(
-                                      context: context,
-                                      initialTime: endTime,
-                                    );
-
-                                    if(newEndTime == null) return;
-
-                                    setState(() {
-                                      endTime = newEndTime;
-                                      print(endTime);
-                                    });
-                                  },
-                                ),
+                                // IconButton(
+                                //   icon: SvgPicture.asset(
+                                //     "assets/icons/icontime.svg",
+                                //     color: primaryColor,
+                                //   ),
+                                //   onPressed: () async {
+                                //     TimeOfDay? newEndTime = await showTimePicker(
+                                //       context: context,
+                                //       initialTime: endTime,
+                                //     );
+                                //
+                                //     if(newEndTime == null) return;
+                                //
+                                //     setState(() {
+                                //       endTime = newEndTime;
+                                //       print(endTime);
+                                //     });
+                                //   },
+                                // ),
                               ],
                             ),
                           ),

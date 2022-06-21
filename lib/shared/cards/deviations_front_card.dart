@@ -1,25 +1,20 @@
-import 'package:deviation_tracker_flutter_app/models/visit_model.dart';
-import 'package:deviation_tracker_flutter_app/screens/deviations/deviations_screen.dart';
+import 'package:deviation_tracker_flutter_app/models/deviation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 
 import '../../constants.dart';
 
-class VisitsFrontCard extends StatefulWidget {
-  const VisitsFrontCard({Key? key, required this.startDate, required this.endDate, required this.startTime, required this.endTime, required this.visit}) : super(key: key);
+class DeviationsFrontCard extends StatefulWidget {
+  const DeviationsFrontCard({Key? key, required this.deviation}) : super(key: key);
 
-  final String startDate;
-  final String endDate;
-  final String startTime;
-  final String endTime;
-  final VisitModel visit;
+  final DeviationModel deviation;
 
   @override
-  State<VisitsFrontCard> createState() => _VisitsFrontCardState();
+  State<DeviationsFrontCard> createState() => _DeviationsFrontCardState();
 }
 
-class _VisitsFrontCardState extends State<VisitsFrontCard> {
+class _DeviationsFrontCardState extends State<DeviationsFrontCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +29,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
             children: [
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/visit.svg",
+                  "assets/icons/deviationicon.svg",
                   color: Colors.black,
                 ),
                 onPressed: () {  },
@@ -44,7 +39,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                 child: Column(
                   children: [
                     Text(
-                      widget.startDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.startDate)),
+                      widget.deviation.deviationStartDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.deviation.deviationStartDate)),
                       style: TextStyle(
                         fontSize: 11,
                         color: primaryColor,
@@ -53,7 +48,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     ),
                     SizedBox(height: 5,),
                     Text(
-                      widget.startTime == null ? "" : TimeOfDay(hour:int.parse(widget.startTime.split(":")[0]),minute: int.parse(widget.startTime.split(":")[1])).format(context),
+                      widget.deviation.deviationStartTime == null ? "" : TimeOfDay(hour:int.parse(widget.deviation.deviationStartTime.split(":")[0]),minute: int.parse(widget.deviation.deviationStartTime.split(":")[1])).format(context),
                       style: TextStyle(
                         fontSize: 15,
                         color: primaryColor,
@@ -77,7 +72,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                 child: Column(
                   children: [
                     Text(
-                      widget.endDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.endDate)),
+                      widget.deviation.deviationEndDate == null ? "" : DateFormat("dd MMMM, yyyy").format(DateTime.parse(widget.deviation.deviationEndDate)),
                       style: TextStyle(
                         fontSize: 11,
                         color: primaryColor,
@@ -86,7 +81,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     ),
                     SizedBox(height: 5,),
                     Text(
-                      widget.endTime == null ? "" : TimeOfDay(hour:int.parse(widget.endTime.split(":")[0]),minute: int.parse(widget.endTime.split(":")[1])).format(context),
+                      widget.deviation.deviationEndTime == null ? "" : TimeOfDay(hour:int.parse(widget.deviation.deviationEndTime.split(":")[0]),minute: int.parse(widget.deviation.deviationEndTime.split(":")[1])).format(context),
                       style: TextStyle(
                         fontSize: 15,
                         color: primaryColor,
@@ -110,7 +105,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                 child: Column(
                   children: [
                     Text(
-                      widget.startDate == null ? "" : DateFormat("dd").format(DateTime.parse(widget.startDate)),
+                      widget.deviation.deviationStartDate == null ? "" : DateFormat("dd").format(DateTime.parse(widget.deviation.deviationStartDate)),
                       style: TextStyle(
                         fontSize: 11,
                         color: Colors.white,
@@ -141,10 +136,10 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
               new Spacer(),
               IconButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) =>
-                        DeviationsScreen(visit: widget.visit,),
-                  ));
+                  // Navigator.push(context, MaterialPageRoute(
+                  //   builder: (context) =>
+                  //       DeviationsScreen(visit: widget.visit,),
+                  // ));
                 },
                 icon: Icon(Icons.arrow_forward_ios),
               ),

@@ -2,6 +2,7 @@ import 'package:deviation_tracker_flutter_app/screens/auth/login_screen.dart';
 import 'package:deviation_tracker_flutter_app/screens/auth/register_screen.dart';
 import 'package:deviation_tracker_flutter_app/screens/wrapper.dart';
 import 'package:deviation_tracker_flutter_app/services/local_storage/localstorage_user_service.dart';
+import 'package:deviation_tracker_flutter_app/viewmodels/deviation_viewmodel.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/visit_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => ProjectViewModel()),
         ChangeNotifierProvider(create: (_) => TurbineViewModel()),
         ChangeNotifierProvider(create: (_) => VisitViewModel()),
+        ChangeNotifierProvider(create: (_) => DeviationViewModel()),
       ],
     child: MaterialApp(
       // localizationsDelegates: AppLocalizations.localizationsDelegates, // <- here

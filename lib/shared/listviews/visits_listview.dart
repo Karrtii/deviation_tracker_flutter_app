@@ -46,6 +46,9 @@ class _VisitsListViewState extends State<VisitsListView> {
               front: VisitsFrontCard(
                 startDate: widget.visits[index].activityStartDate,
                 endDate: widget.visits[index].activityEndDate,
+                startTime: widget.visits[index].activityStartTime,
+                endTime: widget.visits[index].activityEndTime,
+                visit: widget.visits[index]
               ),
               back: VisitsBackCard(),
             )
