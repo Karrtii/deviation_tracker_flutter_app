@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../constants.dart';
 
@@ -44,7 +45,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'Deviations',
+                      AppLocalizations.of(context)!.visitDeviations,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                       ),
                     ),
                     Text(
-                      'duration',
+                      AppLocalizations.of(context)!.visitDurationSmall,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -76,7 +77,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'Lead time',
+                      AppLocalizations.of(context)!.visitLeadTime,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -84,7 +85,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                       ),
                     ),
                     Text(
-                      'incl. SGRE',
+                      AppLocalizations.of(context)!.visitInclSgre,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -108,7 +109,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'Lead time',
+                      AppLocalizations.of(context)!.visitLeadTime,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -116,7 +117,7 @@ class _VisitsBackCardState extends State<VisitsBackCard> {
                       ),
                     ),
                     Text(
-                      'exl. SGRE',
+                      AppLocalizations.of(context)!.visitExlSgre,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,

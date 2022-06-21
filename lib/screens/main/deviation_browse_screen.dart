@@ -6,6 +6,7 @@ import 'package:deviation_tracker_flutter_app/screens/deviations/browse_loadout.
 import 'package:deviation_tracker_flutter_app/viewmodels/project_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeviationBrowseScreen extends StatefulWidget {
   const DeviationBrowseScreen({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                     child: Container(
                       padding: const EdgeInsets.only(left: 20),
                       child: Text(
-                        'Browse',
+                        AppLocalizations.of(context)!.browse,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
@@ -68,9 +69,9 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                         indicator: CircleTabIndicator(color: Colors.blueAccent,
                             radius: 4),
                         tabs: [
-                          Tab(text: 'Loadout'),
-                          Tab(text: 'Installation'),
-                          Tab(text: 'Commissioning'),
+                          Tab(text: AppLocalizations.of(context)!.browseLoadouts),
+                          Tab(text: AppLocalizations.of(context)!.browseInstallations),
+                          Tab(text: AppLocalizations.of(context)!.browseCommissionings),
                         ],
                       ),
                     ),
@@ -100,7 +101,7 @@ class _DeviationBrowseScreenState extends State<DeviationBrowseScreen> with Tick
                                       isExpanded: true,
                                       style: TextStyle(fontSize: 14, color: Colors.black),
                                       decoration: InputDecoration(
-                                        labelText: 'Project',
+                                        labelText: AppLocalizations.of(context)!.browseProject,
                                         labelStyle: TextStyle(color: Colors.white),
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(12),

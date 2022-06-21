@@ -1,22 +1,19 @@
-import 'package:deviation_tracker_flutter_app/constants.dart';
 import 'package:deviation_tracker_flutter_app/models/turbine_model.dart';
-import 'package:deviation_tracker_flutter_app/shared/line_chart.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class VisitsChartFrontCard extends StatefulWidget {
-  const VisitsChartFrontCard({Key? key, required this.turbine}) : super(key: key);
+import '../../constants.dart';
+
+class VisitsChartBackCard extends StatefulWidget {
+  const VisitsChartBackCard({Key? key, required this.turbine}) : super(key: key);
 
   final TurbineModel turbine;
 
   @override
-  State<VisitsChartFrontCard> createState() => _VisitsChartFrontCardState();
+  State<VisitsChartBackCard> createState() => _VisitsChartBackCardState();
 }
 
-class _VisitsChartFrontCardState extends State<VisitsChartFrontCard> {
+class _VisitsChartBackCardState extends State<VisitsChartBackCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -130,7 +127,7 @@ class _VisitsChartFrontCardState extends State<VisitsChartFrontCard> {
                             Column(
                               children: [
                                 Text(
-                                    '15',
+                                  '15',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -138,7 +135,7 @@ class _VisitsChartFrontCardState extends State<VisitsChartFrontCard> {
                                   ),
                                 ),
                                 Text(
-                                    'exl. SGRE',
+                                  'exl. SGRE',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 10,

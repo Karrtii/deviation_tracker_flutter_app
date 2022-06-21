@@ -3,6 +3,7 @@ import 'package:deviation_tracker_flutter_app/screens/deviations/deviations_scre
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../constants.dart';
 
@@ -62,7 +63,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'Start',
+                      AppLocalizations.of(context)!.visitStart,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -95,7 +96,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'End',
+                      AppLocalizations.of(context)!.visitEnd,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -128,7 +129,7 @@ class _VisitsFrontCardState extends State<VisitsFrontCard> {
                     ),
                     SizedBox(height: 8,),
                     Text(
-                      'Duration',
+                      AppLocalizations.of(context)!.visitDuration,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,

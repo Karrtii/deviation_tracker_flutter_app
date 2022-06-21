@@ -1,11 +1,13 @@
 import 'package:deviation_tracker_flutter_app/models/visit_model.dart';
 import 'package:deviation_tracker_flutter_app/screens/deviations/add_deviation_screen.dart';
+import 'package:deviation_tracker_flutter_app/shared/cards/deviations_chart_front_card.dart';
 import 'package:deviation_tracker_flutter_app/shared/listviews/deviations_listview.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/deviation_viewmodel.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../constants.dart';
 
@@ -37,10 +39,10 @@ class _DeviationsScreenState extends State<DeviationsScreen> {
             },
           ),
           title: Padding(
-            padding: const EdgeInsets.only(right: 40),
+            padding: const EdgeInsets.only(right: 55),
             child: Center(
               child: Text(
-                'Deviations',
+                AppLocalizations.of(context)!.deviations,
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -58,21 +60,13 @@ class _DeviationsScreenState extends State<DeviationsScreen> {
                   }
                   else {
                     return FlipCard(
-                      front: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Container(
-                          child: Text("Front"),
-                        ),
+                      front: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                        child: DeviationsChartFrontCard(),
                       ),
-                      back: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Container(
-                          child: Text("Back"),
-                        ),
+                      back: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                        child: DeviationsChartFrontCard(),
                       ),
                     );
                   }
@@ -105,7 +99,7 @@ class _DeviationsScreenState extends State<DeviationsScreen> {
                                 onPressed: () {  },
                               ),
                               Text(
-                                'No deviations have been added yet',
+                                AppLocalizations.of(context)!.deviationsNoDeviationsHaveBeenAddedYet,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: primaryColor,
@@ -124,7 +118,7 @@ class _DeviationsScreenState extends State<DeviationsScreen> {
                           height: MediaQuery
                               .of(context)
                               .size
-                              .height / 1.4,
+                              .height / 3,
                           width: double.maxFinite,
                           child: DeviationsListView(deviations: viewmodel.deviations)
                       );

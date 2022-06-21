@@ -6,6 +6,7 @@ import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart'
 import 'package:deviation_tracker_flutter_app/viewmodels/visit_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TurbinesListView extends StatefulWidget {
   const TurbinesListView({Key? key, required this.turbines, required this.viewmodel}) : super(key: key);
@@ -90,7 +91,7 @@ class _TurbinesListViewState extends State<TurbinesListView> {
                         ),
                         SizedBox(height: 8,),
                         Text(
-                          'Turbine ID',
+                          AppLocalizations.of(context)!.browseTurbineId,
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.black,
@@ -116,7 +117,7 @@ class _TurbinesListViewState extends State<TurbinesListView> {
                         ),
                         SizedBox(height: 8,),
                         Text(
-                          'Total lead time',
+                          AppLocalizations.of(context)!.browseTotalLeadTime,
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.black,
@@ -142,7 +143,7 @@ class _TurbinesListViewState extends State<TurbinesListView> {
                         ),
                         SizedBox(height: 8,),
                         Text(
-                          'Total deviation time',
+                          AppLocalizations.of(context)!.browseTotalDeviationTime,
                           style: TextStyle(
                             fontSize: 10,
                             color: Colors.black,

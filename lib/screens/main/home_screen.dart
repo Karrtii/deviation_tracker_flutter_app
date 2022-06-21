@@ -3,7 +3,9 @@ import 'package:deviation_tracker_flutter_app/shared/listviews/recent_installati
 import 'package:deviation_tracker_flutter_app/shared/listviews/recent_loadouts_listview.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../constants.dart';
 
@@ -65,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Text(
-                  'Recently viewed',
+                  AppLocalizations.of(context)!.homeRecentlyViewed,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
@@ -73,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 15,),
                 Text(
-                  'Installations',
+                  AppLocalizations.of(context)!.homeInstallations,
                   style: TextStyle(
                     // fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -83,10 +85,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: viewmodel.getAllRecentlyViewed(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (viewmodel.recentlyViewed.length == 0) {
-                      return Container(
-                        child: Center(
-                          child: Text('Nothing viewed yet'),
-                          //Text('No bookings exist'),
+                      return  Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              icon: SvgPicture.asset(
+                                "assets/icons/iconempty.svg",
+                                color: primaryColor,
+                              ),
+                              iconSize: 100,
+                              onPressed: () {  },
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.visitNothingAddedYet,
+                              style: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     }
@@ -103,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 30,),
                 Text(
-                  'Loadouts',
+                  AppLocalizations.of(context)!.homeLoadouts,
                   style: TextStyle(
                     // fontWeight: FontWeight.bold,
                     fontSize: 15,
@@ -115,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 30,),
                 Text(
-                  'Commissionings',
+                  AppLocalizations.of(context)!.homeCommissionings,
                   style: TextStyle(
                     // fontWeight: FontWeight.bold,
                     fontSize: 15,

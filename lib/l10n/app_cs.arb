@@ -1,0 +1,35 @@
+{
+    "homeRecentlyViewed": "Nedávno shlédnutý",
+    "homeInstallations": "Installations",
+    "homeLoadouts": "Loadouts",
+    "homeCommissionings": "Commissionings",
+
+    "browse": "Browse",
+    "browseInstallations": "Installations",
+    "browseLoadouts": "Loadouts",
+    "browseCommissionings": "Commissionings",
+    "browseProject": "Project",
+    "browseTurbineId": "TurbineId",
+    "browseTotalLeadTime": "Total lead time",
+    "browseTotalDeviationTime": "Total deviation time",
+
+    "visits": "Visits",
+    "visitLeadTime": "Lead time",
+    "visitInclSgre": "Incl. SGRE",
+    "visitExlSgre": "Exl. SGRE",
+    "visitStart": "Start",
+    "visitEnd": "End",
+    "visitDuration": "Duration",
+    "visitDeviations": "Deviations",
+    "visitDurationSmall": "duration",
+    "visitNothingAddedYet": "Nothing added yet",
+
+    "addVisit": "Add a visit",
+    "addVisitSelectAStartDate": "Select a start date",
+    "addVisitSelectAnEndDate": "Select an end date",
+    "addVisitSelectAStartTime": "Select a start time",
+    "addVisitSelectAnEndTime": "Select an end time",
+
+    "deviations": "Deviations",
+    "deviationsNoDeviationsHaveBeenAddedYet": "No deviations have been added yet"
+}

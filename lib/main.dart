@@ -7,8 +7,10 @@ import 'package:deviation_tracker_flutter_app/viewmodels/turbine_viewmodel.dart'
 import 'package:deviation_tracker_flutter_app/viewmodels/visit_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:deviation_tracker_flutter_app/viewmodels/project_viewmodel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'constants.dart';
 
@@ -66,6 +68,8 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => DeviationViewModel()),
       ],
     child: MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates, // <- here
+      supportedLocales: AppLocalizations.supportedLocales, // <- and here
       // localizationsDelegates: AppLocalizations.localizationsDelegates, // <- here
       // supportedLocales: AppLocalizations.supportedLocales, // <- and here
       navigatorKey: navigatorKey,

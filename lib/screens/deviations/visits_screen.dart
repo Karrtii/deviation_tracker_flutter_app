@@ -3,6 +3,7 @@ import 'package:deviation_tracker_flutter_app/data/advanced_tiles.dart';
 import 'package:deviation_tracker_flutter_app/models/advanced_tile.dart';
 import 'package:deviation_tracker_flutter_app/models/turbine_model.dart';
 import 'package:deviation_tracker_flutter_app/models/visit_model.dart';
+import 'package:deviation_tracker_flutter_app/shared/cards/visits_chart_back_card.dart';
 import 'package:deviation_tracker_flutter_app/shared/cards/visits_chart_front_card.dart';
 import 'package:deviation_tracker_flutter_app/shared/listviews/date_listview.dart';
 import 'package:deviation_tracker_flutter_app/shared/listviews/visits_listview.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../utils.dart';
 
@@ -48,11 +50,14 @@ class _VisitsScreenState extends State<VisitsScreen> {
                   Navigator.of(context).pop();
                 },
               ),
-              title: Center(
-                child: Text(
-                  'Visits',
-                  style: TextStyle(
-                    color: Colors.black,
+              title: Padding(
+                padding: const EdgeInsets.only(right: 22),
+                child: Center(
+                  child: Text(
+                    AppLocalizations.of(context)!.visits,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
@@ -96,21 +101,13 @@ class _VisitsScreenState extends State<VisitsScreen> {
                     }
                     else {
                       return FlipCard(
-                        front: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)
-                          ),
-                          child: Container(
-                            child: Text("Front"),
-                          ),
+                        front: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                          child: VisitsChartFrontCard(turbine: widget.turbine),
                         ),
-                        back: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15)
-                          ),
-                          child: Container(
-                            child: Text("Back"),
-                          ),
+                        back: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                          child: VisitsChartBackCard(turbine: widget.turbine),
                         ),
                       );
                     }
@@ -143,7 +140,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
                                     onPressed: () {  },
                                   ),
                                   Text(
-                                    'Nothing added yet',
+                                    AppLocalizations.of(context)!.visitNothingAddedYet,
                                     style: TextStyle(
                                       color: primaryColor,
                                       fontWeight: FontWeight.bold,
@@ -161,7 +158,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
                               height: MediaQuery
                                   .of(context)
                                   .size
-                                  .height / 1.4,
+                                  .height / 3,
                               width: double.maxFinite,
                             child: VisitsListView(visits: viewmodel.visitsByTurbineId)
                           );
@@ -189,7 +186,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
     context: context,
     builder: (BuildContext context) {
       return SimpleDialog(
-        title: Text('Add a visit'),
+        title: Text(AppLocalizations.of(context)!.addVisit),
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(10 , 5, 10, 5),
@@ -202,7 +199,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Select a start date',
+                          AppLocalizations.of(context)!.addVisitSelectAStartDate,
                           style: TextStyle(
                             fontSize: 12,
                           ),
@@ -270,7 +267,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          'Select a start time',
+                          AppLocalizations.of(context)!.addVisitSelectAStartTime,
                           style: TextStyle(
                             fontSize: 12,
                           ),
@@ -336,13 +333,13 @@ class _VisitsScreenState extends State<VisitsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Select an end date',
+                          AppLocalizations.of(context)!.addVisitSelectAnEndDate,
                           style: TextStyle(
                             fontSize: 12,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(0, 12, 0, 15),
                           child: GestureDetector(
                             onTap: () async {
                               DateTime? newEndDate = await showDatePicker(
@@ -402,13 +399,13 @@ class _VisitsScreenState extends State<VisitsScreen> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          'Select an end time',
+                          AppLocalizations.of(context)!.addVisitSelectAnEndTime,
                           style: TextStyle(
                             fontSize: 12,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 25),
                           child: GestureDetector(
                             onTap: () async {
                               TimeOfDay? newEndTime = await showTimePicker(
