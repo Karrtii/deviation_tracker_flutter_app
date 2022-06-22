@@ -85,13 +85,11 @@ class _DeviationsBackCardState extends State<DeviationsBackCard> {
               ),
               new Spacer(),
               IconButton(
-                onPressed: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //   builder: (context) =>
-                  //       DeviationsScreen(visit: widget.visit,),
-                  // ));
-                },
-                icon: Icon(Icons.arrow_forward_ios),
+                icon: SvgPicture.asset(
+                  "assets/icons/approve.svg",
+                  color: primaryColor,
+                ),
+                onPressed: () {  },
               ),
               //Text(widget.visits == 0 ? "" : DateFormat("dd MMMM, yyyy,").format(DateTime.parse(widget.visits[index].activityStartDate))),
             ],

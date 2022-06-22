@@ -34,6 +34,25 @@ class _VisitsScreenState extends State<VisitsScreen> {
   TimeOfDay startTime = TimeOfDay.now();
   TimeOfDay endTime = TimeOfDay.now();
 
+  bool _isFavourited = false;
+  int _favouriteCount = 0;
+
+  void _toggleFavourite()
+  {
+    setState(() {
+      if(_isFavourited)
+      {
+        _favouriteCount -= 1;
+        _isFavourited = false;
+      }
+      else
+      {
+        _favouriteCount += 1;
+        _isFavourited = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<VisitViewModel>(
@@ -51,7 +70,7 @@ class _VisitsScreenState extends State<VisitsScreen> {
                 },
               ),
               title: Padding(
-                padding: const EdgeInsets.only(right: 22),
+                padding: const EdgeInsets.only(right: 0),
                 child: Center(
                   child: Text(
                     AppLocalizations.of(context)!.visits,
@@ -64,9 +83,11 @@ class _VisitsScreenState extends State<VisitsScreen> {
               actions: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Icon(
-                    Icons.search,
-                    color: Colors.black,
+                  child: IconButton(
+                    icon: (_isFavourited ? Icon(Icons.star) : Icon(Icons.star_border)),
+                    iconSize: 30,
+                    color: primaryColor,
+                    onPressed: _toggleFavourite,
                   ),
                 ),
               ],

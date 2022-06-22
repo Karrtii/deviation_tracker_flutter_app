@@ -152,11 +152,6 @@ class _TurbinesListViewState extends State<TurbinesListView> {
                       ],
                     ),
                     new Spacer(),
-                    IconButton(
-                      icon: (_isFavourited ? Icon(Icons.star) : Icon(Icons.star_border)),
-                      color: Colors.yellow,
-                      onPressed: _toggleFavourite,
-                    ),
                   ],
                 ),
               ),

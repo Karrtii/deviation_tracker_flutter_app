@@ -9,7 +9,7 @@
     "browseLoadouts": "Loadouts",
     "browseCommissionings": "Commissionings",
     "browseProject": "Project",
-    "browseTurbineId": "TurbineId",
+    "browseTurbineId": "Turbine ID",
     "browseTotalLeadTime": "Total lead time",
     "browseTotalDeviationTime": "Total deviation time",
 
@@ -31,5 +31,7 @@
     "addVisitSelectAnEndTime": "Select an end time",
 
     "deviations": "Deviations",
-    "deviationsNoDeviationsHaveBeenAddedYet": "No deviations have been added yet"
+    "deviationsNoDeviationsHaveBeenAddedYet": "No deviations have been added yet",
+
+    "favourites": "Favourites"
 }

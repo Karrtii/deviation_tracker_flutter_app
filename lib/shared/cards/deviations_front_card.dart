@@ -142,6 +142,7 @@ class _DeviationsFrontCardState extends State<DeviationsFrontCard> {
                   // ));
                 },
                 icon: Icon(Icons.arrow_forward_ios),
+                color: Colors.white,
               ),
               //Text(widget.visits == 0 ? "" : DateFormat("dd MMMM, yyyy,").format(DateTime.parse(widget.visits[index].activityStartDate))),
             ],
